@@ -4,6 +4,8 @@
 namespace jointCountUpTo9{
   void setup(){
     commonSetup();
+    pinMode(POT_PIN,INPUT);
+    pinMode(BUT_PIN,INPUT_PULLUP);
 
     #ifndef NDEBUG
       #define showSize(type)\
@@ -36,7 +38,7 @@ namespace jointCountUpTo9{
             "“button value“ == "); Serial.print(analogRead(BUT_PIN)); Serial.print(";  "
             "`n` == "); Serial.print(n); Serial.print(";  ");
           Serial.print("\n");
-          next_debug_time+= micros()+SER_DEBUG_DELAY;
+          next_debug_time= micros()+SER_DEBUG_DELAY;
         }
       #endif
 
@@ -48,7 +50,7 @@ namespace jointCountUpTo9{
           iter_delay= cur_pot*5000ul;
 
           uint16_t const cur_but= analogRead(BUT_PIN);
-          if (cur_but>=1023){
+          if (cur_but<=400){
             n= 0; goto LOOP_START;
           }
         }while(micros()<end);

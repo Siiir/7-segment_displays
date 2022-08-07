@@ -9,10 +9,6 @@ inline void generalSetup(){
   }
   displayBits(0); digitalWrite(NEG_EN_PIN,LOW);
 
-  for (int const pin : INPUT_PIN_N){
-    pinMode(pin, INPUT);
-  }
-
   #ifndef NDEBUG
     Serial.begin(9600);
   #endif
