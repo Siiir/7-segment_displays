@@ -4,10 +4,21 @@ inline void imediateSetup(){
 }
 
 inline void generalSetup(){
-  int constexpr OUTPUT_PINS[]= {BASIC_SR_PINS,   D_PINS};
   for (int const pin : OUTPUT_PINS){
     pinMode(pin, OUTPUT);
   }
-
   displayBits(0); digitalWrite(NEG_EN_PIN,LOW);
+
+  for (int const pin : INPUT_PIN_N){
+    pinMode(pin, INPUT);
+  }
+
+  #ifndef NDEBUG
+    Serial.begin(9600);
+  #endif
+}
+
+inline void commonSetup(){
+  imediateSetup();
+  generalSetup();
 }

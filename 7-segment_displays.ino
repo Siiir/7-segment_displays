@@ -1,12 +1,12 @@
 #include "G:\My Drive\Open to public\IT\full-fledged\C, C++\Arduino\7-segment_displays\programs.inc"
 
-void setup() {
-  imediateSetup();
-  generalSetup();
+#define program jointCountUpTo9
+// #define NDEBUG
 
-  jointCountUpTo9::setup();
-  //countUpProgram();
-  // Serial.begin(9600);
+void setup(){
+  program::setup();
 }
 
-void loop() {}
+void loop() {
+  program::loop();
+}
